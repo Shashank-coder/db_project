@@ -1,0 +1,29 @@
+<div id="workspace-create" v-cloak>
+    
+	<div class="container">
+
+		<h1 class="text-center">Create your Workspace here</h1>
+	    <div class="login-form-container">
+			<hr/>
+
+			<ajax-form action="workspaceCreate" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm" :handle-parsing="handleParsingForm">
+
+				<div class="form-group">
+					<label for="workspaceName">Workspace Name</label>
+					<input type="text" class="form-control" id="workspace-name" placeholder="Enter workspace name" v-model='formData.workspaceName' focus-first>
+				</div>
+
+				<div class="form-group">
+					<label for="workspaceDesc">Workspace Description</label>
+					<textarea type="text" class="form-control" id="workspace-desc" placeholder="Describe your Workspace!" v-model='formData.workspaceDesc'></textarea>
+				</div>
+
+				<p class="text-danger" v-if="cloudError==='error1'"><small>error1.</small></p>
+				<p class="text-danger" v-else-if="cloudError==='error2'"><small>error2.</small></p>
+				
+				<ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Create</ajax-button>
+			</ajax-form>
+		</div>
+	</div>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

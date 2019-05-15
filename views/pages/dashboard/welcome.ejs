@@ -1,0 +1,218 @@
+<div id="welcome" v-cloak>
+
+  <div id="mySidenav" class="sidenav">
+
+    <ajax-form action="changeWorkspace" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm" :handle-parsing="handleParsingForm">
+
+      <label id='workspaceHead'>{{testLabel}}</label>
+
+      <div id="currentworkspace">
+        <select id ="workspacesList" style="width:100%"  v-model='formData.workspaceName'>
+          <% _.each(workspaceIds, function(workspaceId) {%>
+          <option > <%= workspaceId %> </option>
+          <% }) %>
+        </select>
+        <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Change Workspace</ajax-button>
+      </div>
+
+    </ajax-form>
+
+    <div id="buttons-grp">
+      <div class="btn-group" id="btn-group-1">
+        <button class="cbutton" type="button"><a href="/dashboard/workspace-create">Create Workspace</a></button>
+        <button class="cbutton" type="button"><a href="/dashboard/send-workspace-invitation">Send Invitation</a></button>
+        <button class="jbutton" type="button"><a href="/dashboard/join-workspace">Join Workspace</a></button>
+      </div>
+      <div class="btn-group" id="btn-group-2">
+        <button class="ccbutton" type="button"><a href="/dashboard/public-channel-create">Create Public Channel</a></button>
+        <button class="ccbutton" type="button"><a href="/dashboard/private-channel-create">Create Private Channel</a></button>
+        <button class="ccbutton" type="button">Create Direct Channel</button> 
+        <button class="jcbutton" type="button"><a href="/dashboard/send-channel-invitation">Invite to Channel</a></button>
+        <button class="jcbutton" type="button">Join Channel</button>
+      </div>
+    </div>
+    <div id="channels-list" style="color:white; text-align:center;">
+      <p style="font-size:20px; margin-bottom:0px;">Channels</p>
+      <a href="#">Channel 1</a>
+      <a href="#">Channel 2</a>
+      <a href="#">Channel 3</a>
+      <a href="#">Channel 4</a>
+    </div>
+    <div id="channels-list" style="color:white; text-align:center;">
+      <p style="font-size:20px; margin-bottom:0px;">Messages</p>
+      <a href="#">User 1</a>
+      <a href="#">User 2</a>
+      <a href="#">User 3</a>
+      <a href="#">User 4</a>
+      <a href="#">User 5</a>
+      <a href="#">User 6</a>
+      <a href="#">User 7</a>
+      <a href="#">User 8</a>
+      <a href="#">User 9</a>
+    </div>
+  </div>
+
+  <div id="mainContent" style="margin-left:20%;margin-top:50px; width:80%; height:100%;">
+    <p> Channel Title</p>
+    <div id="msgContent"  style="overflow-y:auto;">
+      <div id="perUserMessage" style="text-align:right">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+
+      <div id="perUserMessage">
+        <p style="margin-bottom:0;">Message User</p>
+        <p>Message Content</p>
+      </div>
+    </div>
+    <div id="sendMessage" style="position:fixed;width:100%;bottom:0;">
+      <form class="message-form" action="#">
+      <input type="text" placeholder="Type messages.." style="width:70%">
+      <input type="submit" value="Submit" style="width:10%">
+      </form>
+    </div>
+
+  </div>
+  <router-view></router-view>
+  <!--  ╔═╗═╗ ╦╔═╗╔╦╗╔═╗╦  ╔═╗  ┌┬┐┌─┐┌┬┐┌─┐┬
+  ║╣ ╔╩╦╝╠═╣║║║╠═╝║  ║╣   ││││ │ ││├─┤│
+  ╚═╝╩ ╚═╩ ╩╩ ╩╩  ╩═╝╚═╝  ┴ ┴└─┘─┴┘┴ ┴┴─┘  -->
+  <modal class="example-modal" v-if="modal==='example'" @close="closeExampleModal()" v-cloak>
+    <div class="modal-header">
+      <h2 class="modal-title">Example modal</h2>
+      <p>At your leisure, please peruse this excerpt from a whale of a tale.</p>
+      <hr/>
+      <button type="button" class="modal-close-button" data-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+    <div class="modal-body">
+      <h5 class="section-heading">Chapter 1: Loomings.</h5>
+      <p>Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
+      <div class="js-timestamp-examples">
+
+        <h5 class="section-heading">About 2 years ago</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt-(2*365*24*60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*365*24*60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*365*24*60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">About 2 months ago</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt-(2*30*24*60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*30*24*60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*30*24*60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">2 days ago</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt-(2*24*60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*24*60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*24*60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">2 hours ago</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt-(2*60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(2*60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">15 minutes ago</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt-(15*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(15*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(15*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">45 seconds ago</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt-(45*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(45*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt-(45*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">Right now</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">In an hour</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt+(60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">In two days</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt+(2*24*60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(2*24*60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(2*24*60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">In about two months</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt+(2*30*24*60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(2*30*24*60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(2*30*24*60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+        <h5 class="section-heading">In about two years</h5>
+        <p>
+          <js-timestamp :at="pageLoadedAt+(2*365*24*60*60*1000)"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(2*365*24*60*60*1000)" format="timeago" short="true"></js-timestamp><br/>
+          <js-timestamp :at="pageLoadedAt+(2*365*24*60*60*1000)" format="calendar"></js-timestamp><br/>
+        </p>
+      </div>
+
+    </div>
+    <div class="modal-footer flex-row-reverse justify-content-between">
+    <button type="button" data-dismiss="modal" class="btn btn-info">Close</button>
+    <button type="button" data-dismiss="modal" class="btn btn-outline-info">Cancel</button>
+    </div>
+
+  </modal>
+
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

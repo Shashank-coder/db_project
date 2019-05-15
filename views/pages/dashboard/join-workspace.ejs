@@ -1,0 +1,28 @@
+<div id="join-workspace" v-cloak>
+
+	<div class="container">
+
+		<h1 class="text-center">Here are your Invitations</h1>
+	    <div class="login-form-container">
+			<hr/>
+
+			<ajax-form action="joinWorkspace" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm" :handle-parsing="handleParsingForm">
+
+				<div id="joinworkspace">
+					<select id ="workspacesList" style="width:100%"  v-model='formData.workspaceName'>
+						<% _.each(data, function(value, key) {%>
+						<option > <%= key %>, <%= value %> </option>
+						<% }) %>
+					</select>
+
+					<ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Join</ajax-button>
+				</div>
+
+			</ajax-form>
+
+		</div>
+	</div>
+  
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
